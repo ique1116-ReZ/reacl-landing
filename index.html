@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReACL - 科学定制 ACL 术后运动康复计划</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="./assets/logo_white.png" alt="ReACL Logo" class="logo-img">
+        </div>
+        <a href="#pro" class="btn-buy">立刻获取小程序</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-bg">
+            <img src="./assets/hero_bg_highres.jpg" alt="Dynamic Athlete Running">
+        </div>
+        <div class="hero-content fade-up">
+            <h1 class="hero-title">重返赛场，<br><span class="highlight">更强大</span></h1>
+            <p class="hero-subtitle">科学定制前交叉韧带(ACL)术后康复指南。<br>从术后第一步，到每一次冲刺。</p>
+        </div>
+    </header>
+
+    <section class="section anatomy-section sticky-container">
+        <div class="sticky-visual scale-up">
+            <img src="./assets/knee_anatomy.png" alt="Futuristic Knee Anatomy">
+        </div>
+        <div class="scrolling-content">
+            <div class="step fade-up">
+                <h3>7个严谨的康复阶段</h3>
+                <p>基于顶级运动康复科学，将你的康复拆解为7个精准阶段。每个阶段有明确的晋级标准指标，绝不拔苗助长。</p>
+            </div>
+            <div class="step fade-up">
+                <h3>从保护到强化</h3>
+                <p>第一周消肿与ROM恢复，第四周基础力量建立，逐步增加单腿支撑与核⼼稳定，为恢复跑跳打下坚实基础。</p>
+            </div>
+            <div class="step fade-up">
+                <h3>全面回归运动</h3>
+                <p>恢复直线慢跑，增加多方向变向，完成反向纵跳等高阶测试。打破心理恐惧，重新主宰赛场。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section ai-section">
+        <div class="ai-container">
+            <div class="ai-text fade-up">
+                <h2 class="section-title">你的康复，<br>AI 每天量身定制<sup class="pro-badge">PRO 功能</sup></h2>
+                <p>每日感知疲劳度，根据你的恢复状态、手术时间与半月板情况，<br>动态调整每天的训练强度与动作库。专属的智能康复师。</p>
+            </div>
+            <div class="ai-mockups fade-up delay">
+                <div class="mockup-phone phone-left">
+                    <img src="./assets/reacl_ui_progress.jpg" alt="Progress Overview">
+                </div>
+                <div class="mockup-phone phone-center">
+                    <img src="./assets/reacl_ui_training.jpg" alt="Daily AI Training Plan">
+                </div>
+                <div class="mockup-phone phone-right">
+                    <img src="./assets/reacl_ui_detail.jpg" alt="Exercise Details">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section evidence-section">
+        <div class="evidence-container">
+            <h2 class="section-title fade-up">所有决策，<br>皆有据可依。</h2>
+            <p class="fade-up delay">ReACL的每一个康复动作与晋级标准，均遵循国际前沿运动医学文献指南标准。<br>这不是感性判断，是严谨的科学循证。</p>
+            <div class="magazine-layout fade-up delay">
+                <div class="magazine-card m-1"><img src="./assets/guide_1.png" alt="Guideline 1"></div>
+                <div class="magazine-card m-2"><img src="./assets/guide_2.png" alt="Guideline 2"></div>
+                <div class="magazine-card m-3"><img src="./assets/guide_3.png" alt="Guideline 3"></div>
+                <div class="magazine-card m-4"><img src="./assets/guide_4.png" alt="Guideline 4"></div>
+                <div class="magazine-card m-5"><img src="./assets/guide_5.png" alt="Guideline 5"></div>
+                <div class="magazine-card m-6"><img src="./assets/guide_6.png" alt="Guideline 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pro" class="section cta-section fade-up">
+        <h2>即刻开启康复之旅</h2>
+        <p>微信搜索小程序「ReACL」，或扫描下方小程序码</p>
+        <div class="qrcode-container">
+            <div class="qrcode-box">
+                <img src="./assets/qrcode_miniprogram.jpg" alt="ReACL 小程序码" class="qrcode-img">
+                <span class="qr-text">进入小程序体验</span>
+            </div>
+            <div class="qrcode-box">
+                <img src="./assets/qrcode_wechat.png" alt="客服微信二维码" class="qrcode-img">
+                <span class="qr-text">添加微信开通 PRO 功能</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Audio Widget -->
+    <div class="audio-widget">
+        <audio id="bg-music" loop>
+            <source src="./assets/acl.mp3" type="audio/mpeg">
+        </audio>
+        <div class="audio-visualizer disabled" id="audio-control">
+            <div class="bars"></div>
+            <div class="center-btn">
+                <div class="icon play-icon"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
