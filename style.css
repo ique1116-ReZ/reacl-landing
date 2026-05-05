@@ -221,18 +221,19 @@ body {
 
 /* PRO BADGE */
 .pro-badge {
-    font-size: clamp(14px, 2vw, 20px);
+    font-size: clamp(12px, 2vw, 18px);
     background: linear-gradient(135deg, #FF6B35, #FFA17A);
     color: #FFFFFF;
-    padding: 6px 14px;
-    border-radius: 20px;
+    padding: 4px 10px;
+    border-radius: 12px;
     font-weight: 700;
-    vertical-align: top;
+    vertical-align: middle;
     position: relative;
-    top: -20px;
-    left: 10px;
-    letter-spacing: 1px;
+    top: -12px;
+    left: 4px;
+    letter-spacing: 0.5px;
     box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    white-space: nowrap;
 }
 
 .ai-text p {
@@ -530,18 +531,21 @@ body {
     }
     
     .magazine-layout {
-        height: auto;
-        flex-wrap: wrap;
-        gap: 20px;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-top: 40px;
+        perspective: 1000px;
+        transform: scale(0.7); /* Scale down the whole fan to fit mobile */
     }
     .magazine-card {
-        width: 160px;
-        transform: none !important;
-        opacity: 1 !important;
-        filter: none !important;
+        width: 200px;
+        aspect-ratio: 3/4;
+        position: relative;
     }
-    .magazine-layout:hover .magazine-card {
+    /* Keep the fan-out positions but they will be scaled by the parent */
+    .magazine-layout .magazine-card {
         opacity: 1;
         filter: none;
     }
@@ -560,21 +564,33 @@ body {
     }
     
     .hero-title {
-        font-size: 48px;
+        font-size: 40px;
+        line-height: 1.2;
+    }
+    .section-title {
+        font-size: 32px;
+        line-height: 1.3;
+        margin-bottom: 20px;
+    }
+    .pro-badge {
+        top: -8px;
+        font-size: 10px;
+        padding: 3px 8px;
     }
     
     .ai-mockups {
-        height: 400px;
-        margin-top: 0;
+        height: 350px;
+        margin-top: -20px;
+        transform: scale(0.85);
     }
     .mockup-phone {
-        width: 180px;
-        height: 370px;
-        border-radius: 28px;
-        border-width: 5px;
+        width: 160px;
+        height: 330px;
+        border-radius: 24px;
+        border-width: 4px;
     }
     .mockup-phone img {
-        border-radius: 24px;
+        border-radius: 20px;
     }
     .mockup-phone::before {
         width: 50px;
@@ -590,6 +606,7 @@ body {
     }
     .phone-center {
         transform: scale(1);
+        z-index: 3;
     }
     
     .ai-mockups:hover .phone-left { transform: translateX(-110px) translateY(10px) rotate(-12deg) scale(0.85); }
