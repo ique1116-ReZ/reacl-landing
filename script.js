@@ -57,49 +57,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isPlaying = false;
 
-    // Toggle Play/Pause on Click
-    audioControl.addEventListener('click', () => {
-        if (isPlaying) {
-            bgMusic.pause();
-            audioControl.classList.add('disabled');
-            centerIcon.className = 'icon play-icon';
-        } else {
-            bgMusic.play().catch(e => console.log('Autoplay blocked:', e));
-            audioControl.classList.remove('disabled');
-            centerIcon.className = 'icon stop-icon';
-        }
-        isPlaying = !isPlaying;
-    });
+    const updateAudioControl = (playing) => {
+        isPlaying = playing;
+        audioControl.classList.toggle('disabled', !playing);
+        centerIcon.className = playing ? 'icon stop-icon' : 'icon play-icon';
+        audioControl.setAttribute('aria-pressed', String(playing));
+        audioControl.setAttribute('aria-label', playing ? '暂停背景音乐' : '播放背景音乐');
+    };
 
-    // Attempt Autoplay on Load
-    // Browsers often block autoplay without user interaction, but we try gently.
-    bgMusic.volume = 0.4;
-    const playPromise = bgMusic.play();
-    
-    const startAudioOnInteraction = () => {
-        if (!isPlaying) {
-            bgMusic.play().then(() => {
-                isPlaying = true;
-                audioControl.classList.remove('disabled');
-                centerIcon.className = 'icon stop-icon';
-                // Remove listeners after success
-                document.removeEventListener('click', startAudioOnInteraction);
-                document.removeEventListener('touchstart', startAudioOnInteraction);
-            }).catch(e => console.log('Still blocked:', e));
+    const playMusic = async () => {
+        try {
+            await bgMusic.play();
+            updateAudioControl(true);
+            return true;
+        } catch {
+            updateAudioControl(false);
+            return false;
         }
     };
 
-    if (playPromise !== undefined) {
-        playPromise.then(() => {
-            // Autoplay started successfully
-            isPlaying = true;
-            audioControl.classList.remove('disabled');
-            centerIcon.className = 'icon stop-icon';
-        }).catch(() => {
-            // Autoplay blocked, wait for first user interaction
-            isPlaying = false;
-            document.addEventListener('click', startAudioOnInteraction);
-            document.addEventListener('touchstart', startAudioOnInteraction);
+    const toggleMusic = async () => {
+        if (isPlaying) {
+            bgMusic.pause();
+        } else {
+            if (await playMusic()) {
+                removeUnlockListeners();
+            }
+        }
+    };
+
+    audioControl.addEventListener('click', toggleMusic);
+    audioControl.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleMusic();
+        }
+    });
+
+    bgMusic.addEventListener('play', () => updateAudioControl(true));
+    bgMusic.addEventListener('pause', () => updateAudioControl(false));
+
+    // Attempt autoplay immediately. If the browser blocks audible autoplay,
+    // start on the visitor's first interaction instead.
+    bgMusic.volume = 0.4;
+    const unlockEvents = ['pointerdown', 'keydown'];
+
+    const removeUnlockListeners = () => {
+        unlockEvents.forEach((eventName) => {
+            document.removeEventListener(eventName, startAudioOnInteraction);
         });
-    }
+    };
+
+    const startAudioOnInteraction = async (event) => {
+        // Let the dedicated control handler own interactions on the music button.
+        if (audioControl.contains(event.target)) {
+            return;
+        }
+
+        if (isPlaying) {
+            removeUnlockListeners();
+            return;
+        }
+
+        if (await playMusic()) {
+            removeUnlockListeners();
+        }
+    };
+
+    playMusic().then((started) => {
+        if (!started) {
+            unlockEvents.forEach((eventName) => {
+                document.addEventListener(eventName, startAudioOnInteraction);
+            });
+        } else {
+            removeUnlockListeners();
+        }
+    });
 });

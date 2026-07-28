@@ -214,10 +214,10 @@
 
     <!-- Floating Audio Widget -->
     <div class="audio-widget">
-        <audio id="bg-music" loop>
-            <source src="./assets/acl.mp3" type="audio/mpeg">
+        <audio id="bg-music" autoplay loop preload="auto" playsinline>
+            <source src="./assets/background-music.mp3" type="audio/mpeg">
         </audio>
-        <div class="audio-visualizer disabled" id="audio-control">
+        <div class="audio-visualizer disabled" id="audio-control" role="button" tabindex="0" aria-label="播放背景音乐" aria-pressed="false">
             <div class="bars"></div>
             <div class="center-btn">
                 <div class="icon play-icon"></div>
