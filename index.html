@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReACL - 科学定制 ACL 术后运动康复计划</title>
-    <meta name="description" content="ReACL：科学循证的前交叉韧带(ACL)术后康复训练。7 大康复阶段、117 个视频动作、阶段化个性化训练计划。微信小程序与 iOS App 双端可用。">
+    <meta name="description" content="ReACL：科学循证的前交叉韧带(ACL)术后康复训练。7 大康复阶段、110+ 视频动作、阶段化个性化训练计划。微信小程序与 iOS App 双端可用。">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -112,47 +112,103 @@
         </div>
     </section>
 
-    <section class="section pricing-section">
+    <section class="section pricing-section" aria-labelledby="compare-title">
         <div class="pricing-container">
             <div class="pricing-header fade-up">
-                <h2 class="section-title">选择适合你的康复方案</h2>
-                <p>无论你是刚刚开始，还是追求极致回归，我们都有配套方案。</p>
+                <span class="pricing-eyebrow">ReACL PRO</span>
+                <h2 class="section-title" id="compare-title">康复不该只有<br><span class="highlight">固定答案</span></h2>
+                <p>Free 帮你建立康复基础；Pro 会结合你当天的状态与近期记录，动态调整每天的训练。</p>
             </div>
-            <div class="pricing-grid">
-                <!-- Standard Card -->
-                <div class="pricing-card fade-up">
-                    <div class="card-badge">标准版</div>
-                    <div class="card-header">
-                        <div class="card-price">免费</div>
-                        <p class="card-desc">建立坚实的康复基础</p>
+
+            <div class="compare-intro fade-up delay">
+                <div>
+                    <span class="compare-intro-label">PRO 动作库</span>
+                    <strong>110<span>+</span></strong>
+                </div>
+                <p>从基础恢复到专项训练<br><em>持续更新</em></p>
+            </div>
+
+            <div class="comparison fade-up delay" role="table" aria-label="ReACL Free 与 Pro 功能对比">
+                <div class="comparison-head" role="row">
+                    <div class="comparison-corner" role="columnheader">功能对比</div>
+                    <div class="plan-head plan-free" role="columnheader">
+                        <span>FREE</span>
+                        <small>基础康复</small>
                     </div>
-                    <ul class="card-features">
-                        <li><i class="icon-check"></i> 覆盖 7 大严谨康复阶段</li>
-                        <li><i class="icon-check"></i> 66 个免费康复动作（视频演示）</li>
-                        <li><i class="icon-check"></i> 循证医学指南标准</li>
-                        <li><i class="icon-check"></i> 微信小程序 / iOS 双端</li>
-                        <li><i class="icon-check"></i> 永久免费使用</li>
-                    </ul>
-                    <a href="#pro" class="btn-card">立即开始</a>
+                    <div class="plan-head plan-pro" role="columnheader">
+                        <span>PRO</span>
+                        <small>个性化进阶</small>
+                    </div>
                 </div>
 
-                <!-- Pro Card -->
-                <div class="pricing-card pro-card fade-up delay">
-                    <div class="card-badge">PRO 版</div>
-                    <div class="card-header">
-                        <div class="card-price">¥59<span class="unit">/ 一次性付款</span></div>
-                        <p class="card-desc">个性化进阶方案</p>
+                <div class="comparison-row" role="row">
+                    <div class="feature-name" role="rowheader">
+                        <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span>
+                        <span><strong>每日训练</strong><small>今天练什么</small></span>
                     </div>
-                    <ul class="card-features">
-                        <li><i class="icon-check"></i> 额外 51 个 Pro 进阶动作 <span class="update-tag">持续更新</span></li>
-                        <li><i class="icon-check"></i> AI 智能动态调节每日训练强度</li>
-                        <li><i class="icon-check"></i> 每周训练数据与进度总结</li>
-                        <li><i class="icon-check"></i> AI每日食谱助力高质量恢复</li>
-                        <li><i class="icon-check"></i> 训练负重记录，追踪力量进步</li>
-                        <li><i class="icon-check"></i> 优先体验所有新功能</li>
-                    </ul>
-                    <a href="#pro" class="btn-card btn-primary">开通 PRO</a>
+                    <div class="compare-cell free-cell" role="cell"><span class="cell-label">Free</span><span>固定排课</span></div>
+                    <div class="compare-cell pro-cell" role="cell"><span class="cell-label">Pro</span><i class="pro-check" aria-hidden="true"></i><span>结合当天状态与近期记录，动态调节</span></div>
                 </div>
+
+                <div class="comparison-row" role="row">
+                    <div class="feature-name" role="rowheader">
+                        <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg></span>
+                        <span><strong>动作库</strong><small>训练动作数量</small></span>
+                    </div>
+                    <div class="compare-cell free-cell" role="cell"><span class="cell-label">Free</span><span>66 个基础动作</span></div>
+                    <div class="compare-cell pro-cell pro-emphasis" role="cell"><span class="cell-label">Pro</span><strong>110<span>+</span> 动作</strong><em>持续更新</em></div>
+                </div>
+
+                <div class="comparison-row" role="row">
+                    <div class="feature-name" role="rowheader">
+                        <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></span>
+                        <span><strong>专项训练</strong><small>回归运动准备</small></span>
+                    </div>
+                    <div class="compare-cell free-cell is-empty" role="cell"><span class="cell-label">Free</span><span aria-label="不包含">—</span></div>
+                    <div class="compare-cell pro-cell" role="cell"><span class="cell-label">Pro</span><i class="pro-check" aria-hidden="true"></i><span>术后 12 周开放 · 22 个专项动作</span></div>
+                </div>
+
+                <div class="comparison-row" role="row">
+                    <div class="feature-name" role="rowheader">
+                        <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3v8M4 3v5a3 3 0 0 0 6 0V3M7 11v10M17 3c-2 2-3 5-3 8h6c0-3-1-6-3-8ZM17 11v10"/></svg></span>
+                        <span><strong>饮食</strong><small>营养支持</small></span>
+                    </div>
+                    <div class="compare-cell free-cell" role="cell"><span class="cell-label">Free</span><span>阶段营养指南</span></div>
+                    <div class="compare-cell pro-cell" role="cell"><span class="cell-label">Pro</span><i class="pro-check" aria-hidden="true"></i><span>每日三餐 + 加餐食谱，支持偏好与换一道</span></div>
+                </div>
+
+                <div class="comparison-row" role="row">
+                    <div class="feature-name" role="rowheader">
+                        <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5a4 4 0 0 1 4-2h4v16H8a4 4 0 0 0-4 2V5ZM20 5a4 4 0 0 0-4-2h-4v16h4a4 4 0 0 1 4 2V5Z"/></svg></span>
+                        <span><strong>阶段解读</strong><small>理解恢复进程</small></span>
+                    </div>
+                    <div class="compare-cell free-cell is-empty" role="cell"><span class="cell-label">Free</span><span aria-label="不包含">—</span></div>
+                    <div class="compare-cell pro-cell" role="cell"><span class="cell-label">Pro</span><i class="pro-check" aria-hidden="true"></i><span>每次晋级的个性化解读</span></div>
+                </div>
+
+                <div class="comparison-row" role="row">
+                    <div class="feature-name" role="rowheader">
+                        <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M9 20V4M14 20v-7M19 20V7M2 20h20"/></svg></span>
+                        <span><strong>每周回顾</strong><small>训练反馈</small></span>
+                    </div>
+                    <div class="compare-cell free-cell is-empty" role="cell"><span class="cell-label">Free</span><span aria-label="不包含">—</span></div>
+                    <div class="compare-cell pro-cell" role="cell"><span class="cell-label">Pro</span><i class="pro-check" aria-hidden="true"></i><span>训练数据回顾与建议</span></div>
+                </div>
+
+                <div class="comparison-row" role="row">
+                    <div class="feature-name" role="rowheader">
+                        <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="5" r="2"/><path d="m10 8 3 3 3-1M8 8l-2 5-3 3M10 13l-1 4-4 4M12 14l4 2 2 4"/></svg></span>
+                        <span><strong>重返运动评估</strong><small>回归前测试</small></span>
+                    </div>
+                    <div class="compare-cell free-cell is-empty" role="cell"><span class="cell-label">Free</span><span aria-label="不包含">—</span></div>
+                    <div class="compare-cell pro-cell" role="cell"><span class="cell-label">Pro</span><i class="pro-check" aria-hidden="true"></i><span>术后 9 个月开放 · 评估与报告</span></div>
+                </div>
+            </div>
+
+            <div class="shared-features fade-up">
+                <span class="shared-shield" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.7 3.2 7.8 7.5 9.5 4.3-1.7 7.5-4.8 7.5-9.5V6L12 3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg></span>
+                <p><strong>基础记录功能无需升级</strong><span>角度、腿围、训练打卡与报告存档，Free 与 Pro 均可使用。</span></p>
+                <a href="#pro">查看获取方式 <span aria-hidden="true">→</span></a>
             </div>
         </div>
     </section>
