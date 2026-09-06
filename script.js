@@ -1,9 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const hero = document.querySelector('.hero');
+    const heroSlides = [...document.querySelectorAll('.hero-slide')];
+    const heroDots = [...document.querySelectorAll('.hero-slide-dot')];
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let activeHeroSlide = 0;
+    let heroRotationTimer;
+
+    const showHeroSlide = (index) => {
+        activeHeroSlide = (index + heroSlides.length) % heroSlides.length;
+        heroSlides.forEach((slide, slideIndex) => {
+            slide.classList.toggle('is-active', slideIndex === activeHeroSlide);
+        });
+        heroDots.forEach((dot, dotIndex) => {
+            const isActive = dotIndex === activeHeroSlide;
+            dot.classList.toggle('is-active', isActive);
+            dot.setAttribute('aria-pressed', String(isActive));
+        });
+    };
+
+    const stopHeroRotation = () => {
+        window.clearInterval(heroRotationTimer);
+        heroRotationTimer = undefined;
+    };
+
+    const startHeroRotation = () => {
+        stopHeroRotation();
+        if (reducedMotion.matches || document.hidden || heroSlides.length < 2) return;
+        heroRotationTimer = window.setInterval(() => {
+            showHeroSlide(activeHeroSlide + 1);
+        }, 7000);
+    };
+
+    heroDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showHeroSlide(index);
+            startHeroRotation();
+        });
+    });
+
+    hero?.addEventListener('mouseenter', stopHeroRotation);
+    hero?.addEventListener('mouseleave', startHeroRotation);
+    hero?.addEventListener('focusin', stopHeroRotation);
+    hero?.addEventListener('focusout', startHeroRotation);
+    document.addEventListener('visibilitychange', () => {
+        document.hidden ? stopHeroRotation() : startHeroRotation();
+    });
+    reducedMotion.addEventListener?.('change', startHeroRotation);
+
     // Initial hero load animation
     setTimeout(() => {
-        document.querySelector('.hero-bg img').style.transform = 'scale(1)';
-        document.querySelector('.hero-content').classList.add('visible');
+        hero?.classList.add('is-loaded');
+        document.querySelector('.hero-content')?.classList.add('visible');
     }, 100);
+    startHeroRotation();
 
     // Intersection Observer for scroll animations
     const observerOptions = {
@@ -49,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bar.className = 'bar';
         const angle = (i * 360) / numBars;
         // Translate Y to position bars on the outer edge
-        bar.style.transform = `rotate(${angle}deg) translateY(-45px)`;
+        bar.style.transform = `rotate(${angle}deg) translateY(-33px)`;
         bar.style.animationDelay = `${Math.random() * 0.5}s`;
         bar.style.animationDuration = `${0.5 + Math.random() * 0.5}s`;
         barsContainer.appendChild(bar);

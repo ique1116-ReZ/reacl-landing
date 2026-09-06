@@ -16,12 +16,18 @@
     </nav>
 
     <header class="hero">
-        <div class="hero-bg">
-            <img src="./assets/hero_bg_highres.jpg" alt="Dynamic Athlete Running">
+        <div class="hero-bg" aria-hidden="true">
+            <img class="hero-slide hero-slide-runner is-active" src="./assets/hero-slide-runner.jpg" alt="" fetchpriority="high">
+            <img class="hero-slide hero-slide-gym" src="./assets/hero-slide-gym.jpg" alt="" decoding="async">
+            <img class="hero-slide hero-slide-agility" src="./assets/hero-slide-agility.jpg" alt="" decoding="async">
+            <img class="hero-slide hero-slide-tennis" src="./assets/hero-slide-tennis.jpg" alt="" decoding="async">
+            <img class="hero-slide hero-slide-basketball" src="./assets/hero-slide-basketball.jpg" alt="" decoding="async">
+            <img class="hero-slide hero-slide-football" src="./assets/hero-slide-football.jpg" alt="" decoding="async">
         </div>
-        <div class="hero-content fade-up">
+        <div class="hero-content">
+            <p class="hero-eyebrow"><span aria-hidden="true"></span>ACL 术后阶段化康复</p>
             <h1 class="hero-title">重返赛场，<br><span class="highlight">更强大</span></h1>
-            <p class="hero-subtitle">科学定制前交叉韧带(ACL)术后康复指南。<br>从术后第一步，到每一次冲刺。</p>
+            <p class="hero-subtitle">科学定制 ACL 术后康复计划。<br>从术后第一步，到每一次冲刺。</p>
             <div class="hero-actions">
                 <a href="https://apps.apple.com/cn/app/reacl-%E4%B8%AA%E4%BA%BA%E8%BF%90%E5%8A%A8%E8%AE%AD%E7%BB%83/id6775321000" class="btn-appstore" target="_blank" rel="noopener">
                     <svg class="apple-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.89-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.88 2.65 3.22 2.6 1.29-.05 1.78-.83 3.34-.83 1.56 0 2 .83 3.37.81 1.39-.03 2.27-1.27 3.12-2.53.98-1.45 1.39-2.85 1.41-2.92-.03-.01-2.7-1.04-2.72-4.12zM14.6 4.46c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.26.68-2.99 1.54-.66.76-1.23 1.98-1.08 3.15 1.14.09 2.3-.58 3.01-1.44z"/></svg>
@@ -29,6 +35,19 @@
                 </a>
                 <a href="#pro" class="btn-wechat">微信小程序</a>
             </div>
+            <ul class="hero-proof" aria-label="ReACL 核心能力">
+                <li><strong>7 个阶段</strong><span>循序渐进</span></li>
+                <li><strong>170+ 动作</strong><span>Pro 持续更新</span></li>
+                <li><strong>家中 / 健身房</strong><span>训练环境可选</span></li>
+            </ul>
+        </div>
+        <div class="hero-carousel-controls" role="group" aria-label="切换首屏训练场景">
+            <button class="hero-slide-dot is-active" type="button" aria-label="查看跑步训练场景" aria-pressed="true"></button>
+            <button class="hero-slide-dot" type="button" aria-label="查看健身房力量训练场景" aria-pressed="false"></button>
+            <button class="hero-slide-dot" type="button" aria-label="查看变向训练场景" aria-pressed="false"></button>
+            <button class="hero-slide-dot" type="button" aria-label="查看网球发球场景" aria-pressed="false"></button>
+            <button class="hero-slide-dot" type="button" aria-label="查看篮球扣篮场景" aria-pressed="false"></button>
+            <button class="hero-slide-dot" type="button" aria-label="查看足球凌空抽射场景" aria-pressed="false"></button>
         </div>
     </header>
 
