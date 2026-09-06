@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSlides = [...document.querySelectorAll('.hero-slide')];
     const heroDots = [...document.querySelectorAll('.hero-slide-dot')];
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const heroRotationDelay = 4800;
     let activeHeroSlide = 0;
     let heroRotationTimer;
 
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (reducedMotion.matches || document.hidden || heroSlides.length < 2) return;
         heroRotationTimer = window.setInterval(() => {
             showHeroSlide(activeHeroSlide + 1);
-        }, 7000);
+        }, heroRotationDelay);
     };
 
     heroDots.forEach((dot, index) => {
@@ -38,8 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    hero?.addEventListener('mouseenter', stopHeroRotation);
-    hero?.addEventListener('mouseleave', startHeroRotation);
     hero?.addEventListener('focusin', stopHeroRotation);
     hero?.addEventListener('focusout', startHeroRotation);
     document.addEventListener('visibilitychange', () => {
