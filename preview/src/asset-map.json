@@ -1,0 +1,177 @@
+{
+  "logo_white.png": {
+    "file": "logo_white.webp",
+    "width": 797,
+    "height": 279
+  },
+  "hero-title-transparent.png": {
+    "file": "hero-title-transparent.webp",
+    "width": 1634,
+    "height": 962
+  },
+  "hero-paper-theatre.png": {
+    "file": "hero-paper-theatre.webp",
+    "width": 1536,
+    "height": 1024
+  },
+  "iphone-daily.png": {
+    "file": "iphone-daily.webp",
+    "width": 1206,
+    "height": 2622
+  },
+  "iphone-progress.png": {
+    "file": "iphone-progress.webp",
+    "width": 1206,
+    "height": 2622
+  },
+  "iphone-exercise-detail.png": {
+    "file": "iphone-exercise-detail.webp",
+    "width": 1206,
+    "height": 2622
+  },
+  "iphone17pro-silver.webp": {
+    "file": "iphone17pro-silver.webp",
+    "width": 1332,
+    "height": 2748
+  },
+  "scene-bg-home.jpg": {
+    "file": "scene-bg-home.webp",
+    "width": 1086,
+    "height": 868
+  },
+  "scene-bg-gym.jpg": {
+    "file": "scene-bg-gym.webp",
+    "width": 1086,
+    "height": 868
+  },
+  "coach-weekly-summary.png": {
+    "file": "coach-weekly-summary.webp",
+    "width": 211,
+    "height": 320
+  },
+  "nutrition-hero-icon.png": {
+    "file": "nutrition-hero-icon.webp",
+    "width": 320,
+    "height": 278
+  },
+  "rts-hero-icon.png": {
+    "file": "rts-hero-icon.webp",
+    "width": 220,
+    "height": 220
+  },
+  "lab-sls-assessment.png": {
+    "file": "lab-sls-assessment.webp",
+    "width": 194,
+    "height": 320
+  },
+  "lab-cmj-assessment.png": {
+    "file": "lab-cmj-assessment.webp",
+    "width": 132,
+    "height": 320
+  },
+  "lab-tape.png": {
+    "file": "lab-tape.webp",
+    "width": 213,
+    "height": 320
+  },
+  "cmj-result.png": {
+    "file": "cmj-result.webp",
+    "width": 1320,
+    "height": 2868
+  },
+  "iphone-demo3d.png": {
+    "file": "iphone-demo3d.webp",
+    "width": 1206,
+    "height": 2622
+  },
+  "iphone-tape.png": {
+    "file": "iphone-tape.webp",
+    "width": 1206,
+    "height": 2622
+  },
+  "iphone-tape-step2.png": {
+    "file": "iphone-tape-step2.webp",
+    "width": 1206,
+    "height": 2622
+  },
+  "iphone-tape-step7.png": {
+    "file": "iphone-tape-step7.webp",
+    "width": 1206,
+    "height": 2622
+  },
+  "qrcode_miniprogram.jpg": {
+    "file": "qrcode_miniprogram.webp",
+    "width": 430,
+    "height": 430
+  },
+  "qrcode_wechat.png": {
+    "file": "qrcode_wechat.webp",
+    "width": 600,
+    "height": 577
+  },
+  "acl-phase-icon-1.png": {
+    "file": "acl-phase-icon-1.webp",
+    "width": 320,
+    "height": 320
+  },
+  "acl-phase-icon-2.png": {
+    "file": "acl-phase-icon-2.webp",
+    "width": 320,
+    "height": 320
+  },
+  "acl-phase-icon-3.png": {
+    "file": "acl-phase-icon-3.webp",
+    "width": 320,
+    "height": 320
+  },
+  "acl-phase-icon-4.png": {
+    "file": "acl-phase-icon-4.webp",
+    "width": 320,
+    "height": 320
+  },
+  "acl-phase-icon-5.png": {
+    "file": "acl-phase-icon-5.webp",
+    "width": 320,
+    "height": 320
+  },
+  "acl-phase-icon-6.png": {
+    "file": "acl-phase-icon-6.webp",
+    "width": 320,
+    "height": 320
+  },
+  "acl-phase-icon-7.png": {
+    "file": "acl-phase-icon-7.webp",
+    "width": 320,
+    "height": 320
+  },
+  "guide_1.png": {
+    "file": "guide_1.webp",
+    "width": 637,
+    "height": 900
+  },
+  "guide_2.png": {
+    "file": "guide_2.webp",
+    "width": 615,
+    "height": 878
+  },
+  "guide_3.png": {
+    "file": "guide_3.webp",
+    "width": 620,
+    "height": 877
+  },
+  "guide_4.png": {
+    "file": "guide_4.webp",
+    "width": 601,
+    "height": 875
+  },
+  "guide_5.png": {
+    "file": "guide_5.webp",
+    "width": 603,
+    "height": 861
+  },
+  "guide_6.png": {
+    "file": "guide_6.webp",
+    "width": 618,
+    "height": 877
+  }
+}

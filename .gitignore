@@ -1,2 +1,15 @@
 .DS_Store
 scratch/
+
+# Local design and native capture materials
+design-proposals/
+preview/source-assets/
+preview/qa/
+preview/release/
+preview/AGENTS.md
+preview/asset-optimization.json
+preview/launch-review.md
+preview/motion-review.md
+preview/design-qa.md
+preview/release-notes.md
+preview/.prerender-cache/
