@@ -214,3 +214,71 @@ h2,.feature-copy h3{text-wrap:balance;word-break:normal;overflow-wrap:normal}
 /* Keep selection transitions within their track when the viewport changes. */
 .animated-options{overflow:clip;overflow-clip-margin:8px}
 @media(max-width:360px){.phase-path{margin-right:-20px;padding-right:20px}}
+
+/* ── Motion layer (2026-10-03): motion/react springs + Lenis; artwork and native screenshots untouched ── */
+:root{--ease-out:cubic-bezier(.16,1,.3,1);--ease-draw:cubic-bezier(.65,0,.35,1)}
+html.lenis,html.lenis body{height:auto}html.lenis{scroll-behavior:auto}.lenis.lenis-stopped{overflow:clip}
+.hero-stage{transition:none;transform:none}
+.hero-layer{position:absolute;inset:0;transform-style:preserve-3d;pointer-events:none}
+.hero-layer>*{pointer-events:auto}
+.hero-layer>.hero-art{position:absolute;inset:0}
+.selection-marker{transition:opacity .2s}
+.native-screen{animation:none}
+.screen-swap{width:100%;height:100%}
+.parallax-phone{position:relative;z-index:1}
+.daily-visual .parallax-phone>.iphone-mockup{width:230px;transform:rotate(4deg);margin:0}
+.guide-drift{min-width:0}
+.guide-drift:nth-child(2n) .guide{transform:rotate(3deg)}
+.guide-drift:nth-child(2n+1) .guide{transform:rotate(-3deg)}
+.guide{transition:transform .5s var(--ease-out),translate .5s var(--ease-out)}
+.guide-drift:hover .guide{transform:rotate(0deg) translateY(-10px)}
+.pro-highlights strong>.plus{font-size:30px;margin-left:3px}
+.count-up{font-variant-numeric:tabular-nums}
+
+/* Hero intro: crayon lettering is "drawn" left to right, then the paper scene is set down piece by piece. */
+.hero-copy>.eyebrow{animation:rise .9s .05s var(--ease-out) both}
+.headline-art img{-webkit-mask-image:linear-gradient(90deg,#000 40%,transparent 60%);mask-image:linear-gradient(90deg,#000 40%,transparent 60%);-webkit-mask-size:260% 100%;mask-size:260% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;animation:crayon-draw 1.15s .18s var(--ease-draw) both}
+.headline-desktop-second img{animation-delay:.62s;animation-duration:1.3s}
+.hero-subtitle{animation:rise .9s .95s var(--ease-out) both}
+.hero-copy>.actions{animation:rise .9s 1.08s var(--ease-out) both}
+.hero-stage{animation:stage-set 1.3s .35s var(--ease-out) both}
+.hero-phone{animation:phone-drop 1.25s 1s cubic-bezier(.34,1.32,.5,1) both}
+.stage-label{animation:card-flip 1.1s .85s var(--ease-out) both}
+.hero-phone .paper-label{animation:rise .7s 1.75s var(--ease-out) both}
+.hero-proof>div{animation:rise .9s var(--ease-out) both}
+.hero-proof>div:nth-child(1){animation-delay:1.25s}.hero-proof>div:nth-child(2){animation-delay:1.35s}.hero-proof>div:nth-child(3){animation-delay:1.45s}
+@keyframes crayon-draw{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:0 0;mask-position:0 0}}
+@keyframes rise{from{opacity:0;translate:0 18px;filter:blur(5px)}to{opacity:1;translate:0 0;filter:blur(0)}}
+@keyframes stage-set{from{opacity:0;translate:0 46px;scale:.97}to{opacity:1;translate:0 0;scale:1}}
+@keyframes phone-drop{0%{opacity:0;translate:0 -70px;rotate:9deg}35%{opacity:1}100%{opacity:1;translate:0 0;rotate:0deg}}
+@keyframes card-flip{from{opacity:0;translate:-26px 18px;rotate:-9deg}to{opacity:1;translate:0 0;rotate:0deg}}
+
+/* Scroll reveals: the section stays put, its pieces arrive in reading order. */
+.js [data-reveal]{opacity:1;transform:none;transition:none}
+.js [data-reveal] :is(.section-head>*,.daily-copy>*,.app-showcase>*,.app-extras>article,.feature-tabs,.feature-panel,.pro-intro,.comparison-scroll,.shared,.get-grid>div,.phase-path>li,.guide-shelf>*){opacity:0;translate:0 30px;filter:blur(6px);transition:opacity 1s var(--ease-out),translate 1.2s var(--ease-out),filter 1s var(--ease-out);transition-delay:calc(var(--i,0)*85ms + 60ms)}
+.js [data-reveal].visible :is(.section-head>*,.daily-copy>*,.app-showcase>*,.app-extras>article,.feature-tabs,.feature-panel,.pro-intro,.comparison-scroll,.shared,.get-grid>div,.phase-path>li,.guide-shelf>*){opacity:1;translate:0 0;filter:blur(0)}
+.js [data-reveal] .section-head>h2{clip-path:inset(-20% -5% 100% -5%);translate:0 .5em;filter:none;transition:clip-path 1.1s var(--ease-out),translate 1.1s var(--ease-out),opacity .6s;transition-delay:calc(var(--i,0)*85ms + 60ms)}
+.js [data-reveal].visible .section-head>h2{clip-path:inset(-20% -5% -20% -5%)}
+:is(.section-head,.daily-copy,.app-showcase,.app-extras,.get-grid,.phase-path,.guide-shelf)>:nth-child(2){--i:1}
+:is(.section-head,.daily-copy,.app-showcase,.app-extras,.get-grid,.phase-path,.guide-shelf)>:nth-child(3){--i:2}
+:is(.section-head,.daily-copy,.app-showcase,.app-extras,.get-grid,.phase-path,.guide-shelf)>:nth-child(4){--i:3}
+:is(.section-head,.daily-copy,.app-showcase,.app-extras,.get-grid,.phase-path,.guide-shelf)>:nth-child(5){--i:4}
+:is(.section-head,.daily-copy,.app-showcase,.app-extras,.get-grid,.phase-path,.guide-shelf)>:nth-child(6){--i:5}
+:is(.section-head,.daily-copy,.app-showcase,.app-extras,.get-grid,.phase-path,.guide-shelf)>:nth-child(7){--i:6}
+.js [data-reveal] .phase-path>li{--i-base:3;transition-delay:calc((var(--i,0) + 3)*95ms)}
+.js [data-reveal] .phase-path>li:not(:last-child)::after{opacity:0;translate:-8px 0;transition:opacity .5s var(--ease-out),translate .6s var(--ease-out);transition-delay:calc((var(--i,0) + 4)*95ms)}
+.js [data-reveal].visible .phase-path>li::after{opacity:1;translate:0 0}
+.js [data-reveal] .guide-shelf>*{translate:0 60px;transition-delay:calc((var(--i,0) + 3)*80ms)}
+.feature-tabs,.feature-panel,.pro-intro{--i:3}.comparison-scroll{--i:4}.shared{--i:5}
+.phase-path>li{transition:box-shadow .35s var(--ease-out),background .35s}
+.phase-path>li:hover{background:#fcf9f6;box-shadow:0 10px 24px #8c6a4a14}
+.phase-path>li .phase-tab-art{transition:transform .5s cubic-bezier(.34,1.5,.5,1)}
+.phase-path>li:hover .phase-tab-art{transform:translateY(-4px) rotate(-3deg) scale(1.06)}
+
+@media(max-width:760px){.daily-visual .parallax-phone>.iphone-mockup{width:195px}}
+@media(prefers-reduced-motion:reduce){.js [data-reveal] *,.js [data-reveal] .section-head>h2{opacity:1!important;translate:none!important;filter:none!important;clip-path:none!important}.headline-art img{-webkit-mask-image:none;mask-image:none}}
+/* Shadow lives on the frame image, so the moving screen underneath never re-rasterises a filter. */
+.iphone-mockup{filter:none}
+.iphone-hardware{filter:drop-shadow(4px 12px 14px #463d3420)}
+.screen-swap{position:absolute;inset:0;will-change:transform;backface-visibility:hidden}
+.screen-dim{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
