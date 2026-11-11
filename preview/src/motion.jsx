@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { AnimatePresence, animate, motion, useInView, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react';
 
 // Shared spring for anything the hand directly drives: quick to respond, no wobble.
@@ -81,16 +81,34 @@ export function DeviceSwap({ id, className, children }) {
   </AnimatePresence>;
 }
 
-export function CountUp({ to, duration = 1.4 }) {
+export function CountUp({ to }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '0px 0px -15% 0px' });
-  const [value, setValue] = useState(to);
-  const armed = useRef(false);
+  const inView = useInView(ref, { once: true, amount: 'all' });
+
   useEffect(() => {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (!inView) { if (!armed.current) { armed.current = true; setValue(0) } return }
-    const controls = animate(0, to, { duration, ease: [.16, 1, .3, 1], onUpdate: v => setValue(Math.round(v)) });
-    return () => controls.stop();
-  }, [inView]);
-  return <span ref={ref} className="count-up">{value}</span>;
+    if (!inView) return;
+    const number = ref.current;
+    const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    if (preference.matches) return;
+
+    const controls = animate(Math.round(to * .9), to, {
+      duration: .65,
+      ease: [.22, 1, .36, 1],
+      onUpdate: value => { number.textContent = String(Math.round(value)) },
+    });
+    const finish = () => {
+      controls.stop();
+      number.textContent = String(to);
+    };
+    preference.addEventListener('change', finish);
+    return () => {
+      preference.removeEventListener('change', finish);
+      finish();
+    };
+  }, [inView, to]);
+
+  return <span className="count-up">
+    <span className="count-up-value">{to}</span>
+    <span ref={ref} className="count-up-motion" aria-hidden="true">{to}</span>
+  </span>;
 }

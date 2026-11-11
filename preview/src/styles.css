@@ -233,7 +233,32 @@ html.lenis,html.lenis body{height:auto}html.lenis{scroll-behavior:auto}.lenis.le
 .guide{transition:transform .5s var(--ease-out),translate .5s var(--ease-out)}
 .guide-drift:hover .guide{transform:rotate(0deg) translateY(-10px)}
 .pro-highlights strong>.plus{font-size:30px;margin-left:3px}
-.count-up{font-variant-numeric:tabular-nums}
+.pro-highlights strong>.count-up{display:inline-grid;position:relative;font-size:inherit;margin-left:0;font-variant-numeric:tabular-nums}
+.count-up-value,.count-up-motion{grid-area:1/1}
+.count-up-value{clip-path:inset(50%);white-space:nowrap}
+.count-up-motion{text-align:right}
+
+/* Both action counts share a fixed scale using the advertised Pro minimum. */
+.exercise-bar{
+ display:block;
+ width:7rem;
+ height:3px;
+ margin-top:.4rem;
+ border-radius:2px;
+ background:#e9ddd1;
+}
+.exercise-bar::before{
+ content:"";
+ display:block;
+ width:100%;
+ height:100%;
+ border-radius:inherit;
+ background:#838459;
+ transform:scaleX(var(--exercise-ratio));
+ transform-origin:left;
+}
+.pro-value .exercise-bar::before{background:#b94b21}
+@media(max-width:760px){.exercise-bar{width:4.5rem}}
 
 /* Hero intro: crayon lettering is "drawn" left to right, then the paper scene is set down piece by piece. */
 .hero-copy>.eyebrow{animation:rise .9s .05s var(--ease-out) both}
@@ -255,10 +280,21 @@ html.lenis,html.lenis body{height:auto}html.lenis{scroll-behavior:auto}.lenis.le
 
 /* Scroll reveals: the section stays put, its pieces arrive in reading order. */
 .js [data-reveal]{opacity:1;transform:none;transition:none}
-.js [data-reveal] :is(.section-head>*,.daily-copy>*,.app-showcase>*,.app-extras>article,.feature-tabs,.feature-panel,.pro-intro,.comparison-scroll,.shared,.get-grid>div,.phase-path>li,.guide-shelf>*){opacity:0;translate:0 30px;filter:blur(6px);transition:opacity 1s var(--ease-out),translate 1.2s var(--ease-out),filter 1s var(--ease-out);transition-delay:calc(var(--i,0)*85ms + 60ms)}
-.js [data-reveal].visible :is(.section-head>*,.daily-copy>*,.app-showcase>*,.app-extras>article,.feature-tabs,.feature-panel,.pro-intro,.comparison-scroll,.shared,.get-grid>div,.phase-path>li,.guide-shelf>*){opacity:1;translate:0 0;filter:blur(0)}
-.js [data-reveal] .section-head>h2{clip-path:inset(-20% -5% 100% -5%);translate:0 .5em;filter:none;transition:clip-path 1.1s var(--ease-out),translate 1.1s var(--ease-out),opacity .6s;transition-delay:calc(var(--i,0)*85ms + 60ms)}
-.js [data-reveal].visible .section-head>h2{clip-path:inset(-20% -5% -20% -5%)}
+.js [data-reveal] :is(.section-head>*,.daily-copy>*,.app-showcase>*,.app-extras>article,.feature-tabs,.feature-panel,.pro-intro,.comparison-scroll,.shared,.get-grid>div,.phase-path>li,.guide-shelf>*):not(.reveal-heading){opacity:0;translate:0 30px;filter:blur(6px);transition:opacity 1s var(--ease-out),translate 1.2s var(--ease-out),filter 1s var(--ease-out);transition-delay:calc(var(--i,0)*85ms + 60ms)}
+.js [data-reveal].visible :is(.section-head>*,.daily-copy>*,.app-showcase>*,.app-extras>article,.feature-tabs,.feature-panel,.pro-intro,.comparison-scroll,.shared,.get-grid>div,.phase-path>li,.guide-shelf>*):not(.reveal-heading){opacity:1;translate:0 0;filter:blur(0)}
+.reveal-heading>span{display:block}
+@media(prefers-reduced-motion:no-preference){
+ .js .reveal-heading>span{
+  opacity:0;
+  translate:0 .24em;
+  clip-path:inset(0 -2% 70%);
+  transition:opacity .38s ease-out,translate .6s var(--ease-out),clip-path .6s var(--ease-out);
+ }
+ .js .reveal-heading>span+span{transition-delay:90ms}
+ .js .reveal-heading.visible>span{opacity:1;translate:0 0;clip-path:inset(-8% -2%)}
+ .js .exercise-bar::before{transform:scaleX(0);transition:transform .6s var(--ease-out)}
+ .js .exercise-bar.visible::before{transform:scaleX(var(--exercise-ratio))}
+}
 :is(.section-head,.daily-copy,.app-showcase,.app-extras,.get-grid,.phase-path,.guide-shelf)>:nth-child(2){--i:1}
 :is(.section-head,.daily-copy,.app-showcase,.app-extras,.get-grid,.phase-path,.guide-shelf)>:nth-child(3){--i:2}
 :is(.section-head,.daily-copy,.app-showcase,.app-extras,.get-grid,.phase-path,.guide-shelf)>:nth-child(4){--i:3}
@@ -276,7 +312,7 @@ html.lenis,html.lenis body{height:auto}html.lenis{scroll-behavior:auto}.lenis.le
 .phase-path>li:hover .phase-tab-art{transform:translateY(-4px) rotate(-3deg) scale(1.06)}
 
 @media(max-width:760px){.daily-visual .parallax-phone>.iphone-mockup{width:195px}}
-@media(prefers-reduced-motion:reduce){.js [data-reveal] *,.js [data-reveal] .section-head>h2{opacity:1!important;translate:none!important;filter:none!important;clip-path:none!important}.headline-art img{-webkit-mask-image:none;mask-image:none}}
+@media(prefers-reduced-motion:reduce){.js [data-reveal] *{opacity:1!important;translate:none!important;filter:none!important;clip-path:none!important}.headline-art img{-webkit-mask-image:none;mask-image:none}}
 /* Shadow lives on the frame image, so the moving screen underneath never re-rasterises a filter. */
 .iphone-mockup{filter:none}
 .iphone-hardware{filter:drop-shadow(4px 12px 14px #463d3420)}
