@@ -280,9 +280,38 @@ html.lenis,html.lenis body{height:auto}html.lenis{scroll-behavior:auto}.lenis.le
 
 /* Scroll reveals: the section stays put, its pieces arrive in reading order. */
 .js [data-reveal]{opacity:1;transform:none;transition:none}
-.js [data-reveal] :is(.section-head>*,.daily-copy>*,.app-showcase>*,.app-extras>article,.feature-tabs,.feature-panel,.pro-intro,.comparison-scroll,.shared,.get-grid>div,.phase-path>li,.guide-shelf>*):not(.reveal-heading){opacity:0;translate:0 30px;filter:blur(6px);transition:opacity 1s var(--ease-out),translate 1.2s var(--ease-out),filter 1s var(--ease-out);transition-delay:calc(var(--i,0)*85ms + 60ms)}
-.js [data-reveal].visible :is(.section-head>*,.daily-copy>*,.app-showcase>*,.app-extras>article,.feature-tabs,.feature-panel,.pro-intro,.comparison-scroll,.shared,.get-grid>div,.phase-path>li,.guide-shelf>*):not(.reveal-heading){opacity:1;translate:0 0;filter:blur(0)}
-.reveal-heading>span{display:block}
+.js [data-reveal] :is(.section-head>*,.daily-copy>*,.app-showcase>*,.app-extras>article,.feature-tabs,.feature-panel,.pro-intro,.comparison-scroll,.shared,.get-grid>div,.phase-path>li,.guide-shelf>*):not(.reveal-heading,.scroll-reveal){opacity:0;translate:0 30px;filter:blur(6px);transition:opacity 1s var(--ease-out),translate 1.2s var(--ease-out),filter 1s var(--ease-out);transition-delay:calc(var(--i,0)*85ms + 60ms)}
+.js [data-reveal].visible :is(.section-head>*,.daily-copy>*,.app-showcase>*,.app-extras>article,.feature-tabs,.feature-panel,.pro-intro,.comparison-scroll,.shared,.get-grid>div,.phase-path>li,.guide-shelf>*):not(.reveal-heading,.scroll-reveal){opacity:1;translate:0 0;filter:blur(0)}
+.reveal-heading>span,.scroll-reveal-line{display:block}
+@media(prefers-reduced-motion:no-preference){
+ .js .scroll-reveal-phrase{opacity:var(--phrase-opacity,1);filter:var(--phrase-blur,none)}
+}
+
+.spotlight-card{position:relative;isolation:isolate}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .spotlight-card::before,.spotlight-card::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:inherit;
+  opacity:0;
+  transition:opacity .28s ease-out;
+ }
+ .spotlight-card::before{
+  background:radial-gradient(circle 235px at var(--spotlight-x,50%) var(--spotlight-y,50%),
+    #fffaf3 0%,#ffefdbb8 47%,transparent 100%);
+ }
+ .spotlight-card::after{
+  padding:1px;
+  background:radial-gradient(circle 180px at var(--spotlight-x,50%) var(--spotlight-y,50%),
+    #ce8157 0%,#e8aa7c 35%,transparent 100%);
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
+ }
+ .spotlight-card:hover::before,.spotlight-card:hover::after{opacity:1}
+}
 @media(prefers-reduced-motion:no-preference){
  .js .reveal-heading>span{
   opacity:0;

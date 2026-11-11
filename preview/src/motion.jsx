@@ -81,6 +81,64 @@ export function DeviceSwap({ id, className, children }) {
   </AnimatePresence>;
 }
 
+// React Bits Scroll Reveal, adapted to scroll-linked Chinese phrases with Motion.
+function ScrollRevealPhrase({ progress, start, end, children }) {
+  const opacity = useTransform(progress, [start, end], [.62, 1]);
+  const blur = useTransform(progress, [start, end], ['blur(1.4px)', 'blur(0px)']);
+  return <motion.span className="scroll-reveal-phrase" style={{ '--phrase-opacity': opacity, '--phrase-blur': blur }}>
+    {children}
+  </motion.span>;
+}
+
+export function ScrollReveal({ as: Heading = 'h2', lines }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 94%', 'start 70%'] });
+  const phraseCount = lines.flat().length;
+  let index = 0;
+
+  return <Heading ref={ref} className="scroll-reveal">
+    {lines.map(phrases => <span className="scroll-reveal-line" key={phrases.join('')}>
+      {phrases.map(phrase => {
+        const start = index++ * .55 / Math.max(1, phraseCount - 1);
+        return <ScrollRevealPhrase key={phrase} progress={scrollYProgress} start={start} end={start + .45}>
+          {phrase}
+        </ScrollRevealPhrase>;
+      })}
+    </span>)}
+  </Heading>;
+}
+
+// React Bits Spotlight Card, adapted to the paper surface and existing card layout.
+export function SpotlightCard({ className, children }) {
+  const x = useSpring(0, snappy);
+  const y = useSpring(0, snappy);
+  const xPosition = useTransform(x, value => `${value}px`);
+  const yPosition = useTransform(y, value => `${value}px`);
+
+  const followPointer = event => {
+    if (event.pointerType !== 'mouse' || !matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+    const { left, top } = event.currentTarget.getBoundingClientRect();
+    const nextX = event.clientX - left;
+    const nextY = event.clientY - top;
+    if (event.type === 'pointerenter') {
+      x.jump(nextX);
+      y.jump(nextY);
+    } else {
+      x.set(nextX);
+      y.set(nextY);
+    }
+  };
+
+  return <motion.div
+    className={`${className} spotlight-card`}
+    style={{ '--spotlight-x': xPosition, '--spotlight-y': yPosition }}
+    onPointerEnter={followPointer}
+    onPointerMove={followPointer}
+  >
+    {children}
+  </motion.div>;
+}
+
 export function CountUp({ to }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 'all' });
